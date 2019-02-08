@@ -24,5 +24,7 @@ class MatrixMinimum:
 
 
 
+
+
 matrix = [[1, 5, 3], [2, 5, 7], [5, 3, 5]]
 result = MatrixMinimum(matrix).find()
