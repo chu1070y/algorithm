@@ -1,17 +1,17 @@
 
-# 미완성
-# 결과는 나오지만 런타임 에러 뜸...
+# 항상 조건 잘 확인하자 ㅠㅠ
 def solution(N, stages):
     fail = {}
     answer = []
     number = len(stages)
 
-    for i in range(1,N+1):
-        count = 0
-        if i in stages:
-            count = stages.count(i)
+    for i in range(1, N + 1):
+        count = stages.count(i)
 
-        fail[i] = count/number
+        if number == 0 :
+            fail[i] = 0
+            continue
+        fail[i] = count / number
         number = number - count
 
     print(fail)
