@@ -8,9 +8,13 @@ def solution(n, edge):
 
         if map.get(data[0]) == None:
             map[data[0]] = [data[1]]
-            continue
+        else:
+            map.get(data[0]).append(data[1])
 
-        map.get(data[0]).append(data[1])
+        if map.get(data[1]) == None:
+            map[data[1]] = [data[0]]
+        else:
+            map.get(data[1]).append(data[0])
 
     print(map)
 
@@ -20,23 +24,18 @@ def solution(n, edge):
         # 불필요한 노드 계산하지 말긔
         if count.get(end) != None:
             if count.get(end) <= cnt:
-                print("111")
                 return
 
-        if start == end:
-            print(count)
-            count[end] = cnt
-            return
-
-        if map.get(start) == None:
-            print("222")
+        if end in map.get(start):
+            count[end] = cnt + 1
             return
 
         for i in map.get(start):
             loof(i, end, cnt+1)
 
-    for i in range(2,4):
-        loof(1,i,0)
+    loof(1,4,0)
+
+    print(count)
 
     return answer
 
