@@ -19,23 +19,35 @@ def solution(n, edge):
     print(map)
 
     # 떨어진 노드 count 세긔
-    def loof(start, end, cnt):
+    def loof(start, end, cnt = [1]):
+
+        if cnt.count(start) == 2:
+            return
 
         # 불필요한 노드 계산하지 말긔
         if count.get(end) != None:
-            if count.get(end) <= cnt:
+            if count.get(end) <= len(cnt):
                 return
 
         if end in map.get(start):
-            count[end] = cnt + 1
+            count[end] = len(cnt)
             return
 
         for i in map.get(start):
-            loof(i, end, cnt+1)
+            temp = cnt[:]
+            temp.append(i)
+            loof(i, end, temp)
 
-    loof(1,4,0)
+    for j in range(2,n+1):
+        loof(1,j)
 
     print(count)
+
+    big = max(count.values())
+
+    for key in count.keys():
+        if count.get(key) == big:
+            answer = answer + 1
 
     return answer
 
