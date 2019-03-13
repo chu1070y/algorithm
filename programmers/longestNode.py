@@ -1,3 +1,5 @@
+# 프로그래머스 예제는 실행되나
+# 최종 결과는 런타임 에러 및 시간 초과 뜸.
 def solution(n, edge):
     answer = 0
     map = {}
