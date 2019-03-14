@@ -16,6 +16,7 @@ def bfs(graph, start):
         if n not in visited:
             visited.append(n)
             queue += graph[n] - set(visited)
+
     return visited
 
 print(bfs(graph, 'A'))

@@ -20,14 +20,26 @@ def solution(n, edge):
 
     # 떨어진 노드 count 세긔
     def loof(start, end):
-        queue = [(start,[start])]
+        queue = [start]
+        visited = []
         cnt = 0
 
         while queue:
-            n, path = queue.pop(0)
-            if n == end:
-                cnt += 1
+            pop = queue.pop(0)
 
+            if pop == end:
+                return cnt
+
+            if pop not in visited:
+                visited.append(pop)
+                queue += set(map[pop]) - set(visited)
+
+            cnt += 1
+
+    for i in range(2,n+1):
+        count[i] = loof(1,i)
+
+    print(count)
 
     return answer
 
